@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jumaev Boxing | Private Boxing Coach in Dubai</title>
+    <meta name="description" content="Private boxing coach in Dubai. 1-on-1 sessions, kids coaching & group training at your location. Soviet-style technique. Results in 4–6 weeks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant:ital,wght@0,400;0,600;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        /* ===========================
+           CSS VARIABLES
+        =========================== */
+        :root {
+            --black:      #080808;
+            --dark:       #111111;
+            --card:       #161616;
+            --border:     #242424;
+            --gold:       #C9A84C;
+            --gold-light: #E8D48A;
+            --gold-dim:   rgba(201,168,76,0.10);
+            --white:      #F2EDE4;
+            --grey:       #777777;
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-serif:   'Cormorant', serif;
+            --font-body:    'DM Sans', sans-serif;
+        }
+
+        /* ===========================
+           RESET
+        =========================== */
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: var(--font-body);
+            font-weight: 300;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; }
+        img, video { display: block; width: 100%; }
+
+        /* ===========================
+           NAVIGATION
+        =========================== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 28px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(8,8,8,0.96);
+            backdrop-filter: blur(20px);
+            padding: 16px 60px;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 26px;
+            letter-spacing: 6px;
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--white);
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            opacity: 0.65;
+            transition: opacity 0.3s, color 0.3s;
+        }
+        .nav-links a:hover { opacity:1; color: var(--gold); }
+        .nav-cta {
+            background: var(--gold) !important;
+            color: var(--black) !important;
+            padding: 10px 22px !important;
+            opacity: 1 !important;
+            font-weight: 500 !important;
+            letter-spacing: 2px !important;
+        }
+        .nav-cta:hover { background: var(--gold-light) !important; }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 1px;
+            background: var(--white);
+            transition: all 0.3s;
+        }
+
+        /* ===========================
+           HERO
+        =========================== */
+        #hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 75% 45%, rgba(201,168,76,0.08) 0%, transparent 55%),
+                radial-gradient(ellipse at 15% 85%, rgba(201,168,76,0.04) 0%, transparent 45%),
+                var(--black);
+        }
+        /* Subtle grain */
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.35;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+        /* Vertical gold accent line */
+        .hero-line {
+            position: absolute;
+            top: 0;
+            right: 22%;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, var(--gold) 25%, var(--gold) 75%, transparent 100%);
+            opacity: 0.12;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 60px;
+            max-width: 950px;
+        }
+        .hero-eyebrow {
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 22px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.3s forwards;
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(78px, 11.5vw, 156px);
+            line-height: 0.88;
+            letter-spacing: 3px;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.9s ease 0.5s forwards;
+        }
+        .hero-title .gold { color: var(--gold); display: block; }
+        .hero-sub {
+            font-family: var(--font-serif);
+            font-size: clamp(16px, 1.8vw, 22px);
+            font-style: italic;
+            color: rgba(242,237,228,0.55);
+            margin: 28px 0 48px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.7s forwards;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.9s forwards;
+        }
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 15px 34px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--white);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .btn-ghost:hover { opacity: 1; }
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 60px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--grey);
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 1.2s forwards;
+        }
+        .scroll-line {
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            animation: growLine 1s ease 1.6s forwards;
+        }
+
+        /* ===========================
+           MARQUEE TICKER
+        =========================== */
+        .ticker {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--dark);
+            padding: 18px 0;
+            overflow: hidden;
+        }
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            animation: ticker 22s linear infinite;
+        }
+        .ticker-item {
+            font-family: var(--font-display);
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            padding: 0 32px;
+            white-space: nowrap;
+        }
+        .ticker-sep {
+            color: rgba(242,237,228,0.25);
+            font-size: 8px;
+            align-self: center;
+        }
+
+        /* ===========================
+           SHARED SECTION STYLES
+        =========================== */
+        section { padding: 110px 60px; }
+        .sec-label {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .sec-label::after { content:''; width:28px; height:1px; background:var(--gold); }
+        h2 {
+            font-family: var(--font-display);
+            font-size: clamp(46px, 5.5vw, 76px);
+            line-height: 0.95;
+            letter-spacing: 2px;
+        }
+        .max-w { max-width: 1200px; margin: 0 auto; }
+
+        /* ===========================
+           ABOUT
+        =========================== */
+        #about { background: var(--dark); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .about-text h2 { margin: 20px 0 28px; }
+        .about-text p {
+            color: rgba(242,237,228,0.60);
+            font-size: 15.5px;
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+        .about-text p em { color: rgba(242,237,228,0.85); font-style: italic; }
+        .about-stats {
+            display: flex;
+            gap: 36px;
+            flex-wrap: wrap;
+            margin-top: 44px;
+            padding-top: 36px;
+            border-top: 1px solid var(--border);
+        }
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 52px;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .stat-lbl {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-top: 6px;
+        }
+        .about-img-wrap { position: relative; }
+        .about-img-box {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: var(--card);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+        }
+        .about-img-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gold);
+        }
+        .about-img-box img { width:100%; height:100%; object-fit:cover; }
+        .about-img-placeholder {
+            width:100%; height:100%;
+            display:flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            gap:12px; color:var(--grey);
+            font-size:12px; letter-spacing:2px;
+            text-transform:uppercase;
+        }
+        .about-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 18px 22px;
+            font-family: var(--font-display);
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* ===========================
+           SERVICES
+        =========================== */
+        #services { background: var(--black); }
+        .services-hdr {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 56px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 2px;
+        }
+        .svc-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 44px 36px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s;
+        }
+        .svc-card::after {
+            content:'';
+            position:absolute; inset:0;
+            background: var(--gold-dim);
+            opacity:0;
+            transition: opacity 0.4s;
+        }
+        .svc-card:hover { border-color: rgba(201,168,76,0.35); }
+        .svc-card:hover::after { opacity:1; }
+        .svc-card:hover .svc-num { color: rgba(201,168,76,0.2); }
+        .svc-num {
+            font-family: var(--font-display);
+            font-size: 68px;
+            color: rgba(255,255,255,0.04);
+            line-height:1;
+            margin-bottom:24px;
+            transition: color 0.4s;
+            position:relative; z-index:1;
+        }
+        .svc-icon { font-size:30px; margin-bottom:18px; position:relative; z-index:1; }
+        .svc-name {
+            font-family: var(--font-display);
+            font-size: 30px;
+            letter-spacing:1px;
+            margin-bottom:14px;
+            position:relative; z-index:1;
+        }
+        .svc-desc {
+            color: rgba(242,237,228,0.52);
+            font-size:14px;
+            line-height:1.8;
+            margin-bottom:28px;
+            position:relative; z-index:1;
+        }
+        .svc-features { list-style:none; position:relative; z-index:1; }
+        .svc-features li {
+            font-size:12.5px;
+            color:rgba(242,237,228,0.48);
+            padding:8px 0;
+            display:flex; align-items:center; gap:10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .svc-features li:last-child { border-bottom:none; }
+        .svc-features li::before {
+            content:'';
+            width:14px; height:1px;
+            background:var(--gold);
+            flex-shrink:0;
+        }
+
+        /* ===========================
+           PRICING
+        =========================== */
+        #pricing { background: var(--dark); }
+        .pricing-hdr { margin-bottom: 52px; }
+        .pricing-grid {
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:20px;
+        }
+        .price-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 44px 32px;
+            text-align: center;
+            position:relative;
+            transition: border-color 0.3s;
+        }
+        .price-card.featured {
+            border-color: var(--gold);
+            background: linear-gradient(160deg, var(--card) 60%, rgba(201,168,76,0.06) 100%);
+        }
+        .price-card.featured::before {
+            content: 'BEST VALUE';
+            position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+            background:var(--gold); color:var(--black);
+            font-size:10px; letter-spacing:3px; font-weight:500;
+            padding:6px 18px;
+        }
+        .price-name {
+            font-family:var(--font-display);
+            font-size:22px; letter-spacing:2px;
+            margin-bottom:6px;
+        }
+        .price-type {
+            font-size:11px; letter-spacing:2px;
+            text-transform:uppercase; color:var(--grey);
+            margin-bottom:28px;
+        }
+        .price-amount {
+            font-family:var(--font-display);
+            font-size:60px; color:var(--gold);
+            line-height:1;
+        }
+        .price-curr {
+            font-size:22px;
+            vertical-align:top; margin-top:10px;
+            display:inline-block;
+        }
+        .price-per {
+            font-size:12px; color:var(--grey);
+            margin:8px 0 28px;
+        }
+        .price-feats { list-style:none; text-align:left; margin-bottom:36px; }
+        .price-feats li {
+            font-size:13px; color:rgba(242,237,228,0.58);
+            padding:10px 0;
+            border-bottom:1px solid var(--border);
+            display:flex; align-items:center; gap:10px;
+        }
+        .price-feats li:last-child { border-bottom:none; }
+        .price-feats li::before { content:'✓'; color:var(--gold); font-size:12px; flex-shrink:0; }
+        .price-note {
+            text-align:center; font-size:13px;
+            color:var(--grey); font-style:italic;
+            margin-top:36px;
+        }
+
+        /* ===========================
+           GALLERY
+        =========================== */
+        #gallery { background:var(--black); }
+        .gallery-hdr { margin-bottom:40px; }
+        .gallery-grid {
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-auto-rows: 280px;
+            gap:4px;
+        }
+        .g-item {
+            overflow:hidden;
+            position:relative;
+            cursor:pointer;
+            background:var(--card);
+            border:1px solid var(--border);
+        }
+        .g-item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .g-item img, .g-item video {
+            width:100%; height:100%;
+            object-fit:cover;
+            transition: transform 0.6s ease;
+        }
+        .g-item:hover img, .g-item:hover video { transform:scale(1.04); }
+        .g-placeholder {
+            width:100%; height:100%;
+            display:flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            gap:10px; color:var(--grey);
+            font-size:11px; letter-spacing:2px;
+            text-transform:uppercase;
+        }
+        .g-placeholder .icon { font-size:28px; opacity:0.5; }
+        .g-add-label {
+            font-size:10px; opacity:0.4;
+        }
+
+        /* ===========================
+           REVIEWS
+        =========================== */
+        #reviews { background:var(--dark); }
+        .reviews-hdr {
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-end;
+            margin-bottom:52px;
+            flex-wrap:wrap;
+            gap:24px;
+        }
+        .insta-link {
+            display:flex;
+            align-items:center;
+            gap:10px;
+            border:1px solid var(--border);
+            padding:12px 20px;
+            color:var(--white);
+            font-size:12px;
+            letter-spacing:1.5px;
+            text-transform:uppercase;
+            transition: border-color 0.3s, color 0.3s;
+        }
+        .insta-link:hover { border-color:var(--gold); color:var(--gold); }
+        .reviews-grid {
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:20px;
+        }
+        .rev-card {
+            background:var(--card);
+            border:1px solid var(--border);
+            padding:32px;
+        }
+        .rev-stars { color:var(--gold); font-size:13px; letter-spacing:2px; margin-bottom:18px; }
+        .rev-text {
+            font-family:var(--font-serif);
+            font-size:16px; font-style:italic;
+            color:rgba(242,237,228,0.68);
+            line-height:1.75;
+            margin-bottom:22px;
+        }
+        .rev-author { display:flex; align-items:center; gap:12px; }
+        .rev-avatar {
+            width:38px; height:38px;
+            border-radius:50%;
+            background:var(--border);
+            display:flex; align-items:center; justify-content:center;
+            font-family:var(--font-display);
+            font-size:17px; color:var(--gold);
+            flex-shrink:0;
+        }
+        .rev-name { font-size:13px; font-weight:500; }
+        .rev-loc { font-size:11px; color:var(--grey); margin-top:2px; }
+        .reviews-note {
+            text-align:center; font-size:13px;
+            color:var(--grey); font-style:italic;
+            margin-top:36px;
+        }
+
+        /* ===========================
+           FAQ
+        =========================== */
+        #faq { background:var(--black); }
+        .faq-hdr { margin-bottom:52px; max-width:700px; }
+        .faq-list { max-width:760px; margin:0 auto; }
+        .faq-item { border-bottom:1px solid var(--border); }
+        .faq-q {
+            width:100%; text-align:left;
+            background:none; border:none; cursor:pointer;
+            padding:26px 0;
+            color:var(--white);
+            font-family:var(--font-body);
+            font-size:15.5px;
+            display:flex; justify-content:space-between;
+            align-items:center; gap:20px;
+            transition:color 0.3s;
+        }
+        .faq-q:hover { color:var(--gold); }
+        .faq-icon {
+            width:26px; height:26px;
+            border:1px solid var(--border);
+            border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            font-size:18px; color:var(--gold);
+            flex-shrink:0;
+            transition:all 0.3s;
+        }
+        .faq-item.open .faq-icon {
+            background:var(--gold); color:var(--black);
+            border-color:var(--gold);
+            transform:rotate(45deg);
+        }
+        .faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+        .faq-a-inner {
+            padding:0 0 24px;
+            color:rgba(242,237,228,0.58);
+            font-size:14px; line-height:1.85;
+        }
+
+        /* ===========================
+           CONTACT
+        =========================== */
+        #contact { background:var(--dark); }
+        .contact-grid {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:80px;
+            align-items:start;
+        }
+        .contact-info h2 { margin:18px 0 20px; }
+        .contact-info p {
+            color:rgba(242,237,228,0.58);
+            font-size:15px; line-height:1.85;
+            margin-bottom:36px;
+        }
+        .c-methods { display:flex; flex-direction:column; gap:14px; }
+        .c-method {
+            display:flex; align-items:center; gap:16px;
+            padding:18px; border:1px solid var(--border);
+            color:var(--white);
+            transition:border-color 0.3s, background 0.3s;
+        }
+        .c-method:hover {
+            border-color:var(--gold);
+            background:var(--gold-dim);
+        }
+        .c-icon {
+            width:46px; height:46px;
+            background:var(--card);
+            display:flex; align-items:center; justify-content:center;
+            font-size:22px; flex-shrink:0;
+        }
+        .c-lbl {
+            font-size:10px; letter-spacing:2px;
+            text-transform:uppercase; color:var(--grey);
+        }
+        .c-val { font-size:14px; color:var(--white); margin-top:3px; }
+
+        /* Booking form */
+        .book-form {
+            background:var(--card);
+            border:1px solid var(--border);
+            padding:44px;
+        }
+        .form-ttl {
+            font-family:var(--font-display);
+            font-size:26px; letter-spacing:2px;
+            margin-bottom:28px;
+        }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        .form-grp { margin-bottom:16px; }
+        .form-lbl {
+            display:block;
+            font-size:10px; letter-spacing:2px;
+            text-transform:uppercase; color:var(--grey);
+            margin-bottom:7px;
+        }
+        .form-inp, .form-sel, .form-ta {
+            width:100%;
+            background:var(--dark);
+            border:1px solid var(--border);
+            color:var(--white);
+            padding:13px 14px;
+            font-family:var(--font-body);
+            font-size:14px;
+            outline:none;
+            border-radius:0;
+            transition:border-color 0.3s;
+            -webkit-appearance:none;
+        }
+        .form-inp:focus, .form-sel:focus, .form-ta:focus { border-color:var(--gold); }
+        .form-inp::placeholder, .form-ta::placeholder { color:var(--grey); opacity:0.6; }
+        .form-sel option { background:var(--dark); }
+        .form-ta { height:96px; resize:vertical; }
+        .form-submit {
+            width:100%; background:var(--gold); color:var(--black);
+            border:none; padding:17px;
+            font-family:var(--font-body); font-size:11px;
+            font-weight:500; letter-spacing:3px;
+            text-transform:uppercase; cursor:pointer;
+            margin-top:8px;
+            transition:background 0.3s;
+        }
+        .form-submit:hover { background:var(--gold-light); }
+        .form-note {
+            font-size:11px; color:var(--grey);
+            text-align:center; margin-top:12px;
+        }
+
+        /* ===========================
+           WHATSAPP FLOAT
+        =========================== */
+        .wa-float {
+            position:fixed;
+            bottom:28px; right:28px;
+            z-index:999;
+            width:54px; height:54px;
+            border-radius:50%;
+            background:#25D366;
+            display:flex; align-items:center; justify-content:center;
+            box-shadow:0 4px 20px rgba(37,211,102,0.35);
+            transition:transform 0.3s, box-shadow 0.3s;
+        }
+        .wa-float:hover {
+            transform:scale(1.1);
+            box-shadow:0 8px 28px rgba(37,211,102,0.45);
+        }
+        .wa-float svg { width:27px; height:27px; fill:white; }
+
+        /* ===========================
+           FOOTER
+        =========================== */
+        footer {
+            background:var(--black);
+            border-top:1px solid var(--border);
+            padding:56px 60px;
+        }
+        .footer-inner {
+            max-width:1200px; margin:0 auto;
+            display:flex; justify-content:space-between;
+            align-items:center; flex-wrap:wrap; gap:28px;
+        }
+        .footer-logo {
+            font-family:var(--font-display);
+            font-size:30px; letter-spacing:5px; color:var(--gold);
+        }
+        .footer-tag {
+            font-size:11px; letter-spacing:2px;
+            text-transform:uppercase; color:var(--grey);
+            margin-top:3px;
+        }
+        .footer-nav { display:flex; gap:28px; list-style:none; }
+        .footer-nav a {
+            color:var(--grey); font-size:11px;
+            letter-spacing:2px; text-transform:uppercase;
+            transition:color 0.3s;
+        }
+        .footer-nav a:hover { color:var(--gold); }
+        .footer-copy { font-size:11px; color:var(--grey); }
+
+        /* ===========================
+           ANIMATIONS
+        =========================== */
+        @keyframes fadeUp {
+            to { opacity:1; transform:translateY(0); }
+        }
+        @keyframes growLine {
+            to { width:40px; }
+        }
+        @keyframes ticker {
+            from { transform:translateX(0); }
+            to   { transform:translateX(-50%); }
+        }
+        .reveal {
+            opacity:0;
+            transform:translateY(28px);
+            transition:opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.in { opacity:1; transform:none; }
+        .d1 { transition-delay:0.1s; }
+        .d2 { transition-delay:0.2s; }
+        .d3 { transition-delay:0.3s; }
+
+        /* ===========================
+           MOBILE RESPONSIVE
+        =========================== */
+        @media (max-width:900px) {
+            nav { padding:20px 24px; }
+            nav.scrolled { padding:14px 24px; }
+            section { padding:80px 24px; }
+            .hero-content { padding:0 24px; }
+            .hero-scroll { left:24px; }
+
+            .nav-links {
+                display:none;
+                position:fixed; inset:0;
+                background:var(--black);
+                flex-direction:column;
+                align-items:center; justify-content:center;
+                gap:28px; z-index:999;
+            }
+            .nav-links.open { display:flex; }
+            .nav-links a { font-size:15px; }
+            .hamburger { display:flex; }
+
+            .about-grid,
+            .contact-grid { grid-template-columns:1fr; gap:44px; }
+            .about-img-wrap { order:-1; }
+            .about-badge { bottom:-14px; right:-14px; }
+            .services-grid,
+            .pricing-grid,
+            .reviews-grid { grid-template-columns:1fr; }
+            .gallery-grid { grid-template-columns:1fr 1fr; grid-auto-rows:200px; }
+            .g-item:first-child { grid-column:span 2; grid-row:span 1; }
+            .services-hdr,
+            .reviews-hdr { flex-direction:column; align-items:flex-start; gap:20px; }
+            .form-row { grid-template-columns:1fr; }
+            .book-form { padding:28px 20px; }
+            footer { padding:40px 24px; }
+            .footer-inner { flex-direction:column; align-items:flex-start; gap:20px; }
+            .footer-nav { flex-wrap:wrap; gap:16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ====== NAVIGATION ====== -->
+<nav id="navbar">
+    <a href="#hero" class="nav-logo">JUMAEV</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="hamburger" id="ham" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-line"></div>
+    <div class="hero-content">
+        <p class="hero-eyebrow">Dubai's Private Boxing Coach</p>
+        <h1 class="hero-title">
+            JUMAEV<span class="gold">BOXING</span>
+        </h1>
+        <p class="hero-sub">Soviet-style discipline. Real results in 4–6 weeks.<br>We train at your location, on your schedule.</p>
+        <div class="hero-actions">
+            <a href="#contact" class="btn-gold">Book a Session</a>
+            <a href="#about" class="btn-ghost">Meet the Coach &rarr;</a>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        Scroll to explore
+    </div>
+</section>
+
+<!-- ====== TICKER ====== -->
+<div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+        <span class="ticker-item">Private Sessions</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <span class="ticker-item">Kids &amp; Youth</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <span class="ticker-item">Group Training</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <span class="ticker-item">We Come to You</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <span class="ticker-item">All Ages &amp; Levels</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <span class="ticker-item">Soviet-Style Boxing</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <span class="ticker-item">Dubai &nbsp;·&nbsp; UAE</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="ticker-item">Private Sessions</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <span class="ticker-item">Kids &amp; Youth</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <span class="ticker-item">Group Training</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <span class="ticker-item">We Come to You</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <span class="ticker-item">All Ages &amp; Levels</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <span class="ticker-item">Soviet-Style Boxing</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+        <span class="ticker-item">Dubai &nbsp;·&nbsp; UAE</span><span class="ticker-sep">&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+    </div>
+</div>
+
+<!-- ====== ABOUT ====== -->
+<section id="about">
+    <div class="max-w about-grid">
+        <div class="about-text reveal">
+            <div class="sec-label">The Coach</div>
+            <h2>BUILT ON<br>DISCIPLINE</h2>
+            <p>Rooted in the Soviet boxing tradition — one of the most technically precise and results-driven schools in the world — Coach Jumaev brings over 10 years of boxing experience to every session in Dubai.</p>
+            <p>Born in Uzbekistan and shaped by a system that produces world champions, the Jumaev Boxing philosophy goes beyond fitness. It's about mastering technique, developing footwork, building timing — and cultivating the mental edge that separates ordinary athletes from exceptional ones.</p>
+            <p>Students of all levels — complete beginners to returning athletes — consistently see measurable progress within <em>4–6 weeks</em>. Because boxing isn't just a sport here. <em>It's a lifestyle.</em></p>
+            <div class="about-stats">
+                <div>
+                    <div class="stat-num">10+</div>
+                    <div class="stat-lbl">Years Experience</div>
+                </div>
+                <div>
+                    <div class="stat-num">4–6</div>
+                    <div class="stat-lbl">Weeks to Results</div>
+                </div>
+                <div>
+                    <div class="stat-num">All</div>
+                    <div class="stat-lbl">Ages Welcome</div>
+                </div>
+            </div>
+        </div>
+        <div class="about-img-wrap reveal d2">
+            <div class="about-img-box">
+                <!--
+                    TO ADD YOUR PHOTO:
+                    Replace the div below with:
+                    <img src="your-photo.jpg" alt="Coach Jumaev">
+                -->
+                <div class="about-img-placeholder">
+                    <span style="font-size:48px;">🥊</span>
+                    <span>Your Photo Here</span>
+                    <span class="g-add-label">Replace with &lt;img src="photo.jpg"&gt;</span>
+                </div>
+            </div>
+            <div class="about-badge">COACH<br>JUMAEV</div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== SERVICES ====== -->
+<section id="services">
+    <div class="max-w">
+        <div class="services-hdr">
+            <div>
+                <div class="sec-label">What I Offer</div>
+                <h2>TRAINING<br>PROGRAMS</h2>
+            </div>
+            <a href="#contact" class="btn-gold">Book a Session</a>
+        </div>
+        <div class="services-grid">
+            <div class="svc-card reveal">
+                <div class="svc-num">01</div>
+                <div class="svc-icon">🥊</div>
+                <div class="svc-name">PRIVATE 1-ON-1</div>
+                <p class="svc-desc">The fastest path to real skill. Every session is built entirely around you — your goals, your level, your schedule. Coach comes to you.</p>
+                <ul class="svc-features">
+                    <li>Complete technical coaching</li>
+                    <li>Footwork &amp; defense mastery</li>
+                    <li>Custom training plan</li>
+                    <li>All equipment provided</li>
+                    <li>Flexible timing &amp; location</li>
+                </ul>
+            </div>
+            <div class="svc-card reveal d1">
+                <div class="svc-num">02</div>
+                <div class="svc-icon">👦</div>
+                <div class="svc-name">KIDS &amp; YOUTH</div>
+                <p class="svc-desc">Age-appropriate boxing for children and teens. Structured to build coordination, confidence, focus, and fitness — the right way from day one.</p>
+                <ul class="svc-features">
+                    <li>Ages 6 and above</li>
+                    <li>Fundamentals-first approach</li>
+                    <li>Builds confidence &amp; discipline</li>
+                    <li>Safe, structured environment</li>
+                    <li>Progress tracked every session</li>
+                </ul>
+            </div>
+            <div class="svc-card reveal d2">
+                <div class="svc-num">03</div>
+                <div class="svc-icon">👥</div>
+                <div class="svc-name">GROUP TRAINING</div>
+                <p class="svc-desc">Small group sessions for 2–5 people. Friends, family, colleagues — get the energy of a team with the quality of personal coaching.</p>
+                <ul class="svc-features">
+                    <li>Maximum 5 per group</li>
+                    <li>High-energy, focused sessions</li>
+                    <li>Technique + conditioning</li>
+                    <li>Great for all beginners</li>
+                    <li>Your preferred location</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== PRICING ====== -->
+<section id="pricing">
+    <div class="max-w">
+        <div class="pricing-hdr">
+            <div class="sec-label">Transparent Rates</div>
+            <h2>PRICING</h2>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card reveal">
+                <div class="price-name">PRIVATE</div>
+                <div class="price-type">1-on-1 · Per Session</div>
+                <div class="price-amount"><span class="price-curr">AED&nbsp;</span>300</div>
+                <div class="price-per">per session &nbsp;·&nbsp; 60 min</div>
+                <ul class="price-feats">
+                    <li>Personalized training</li>
+                    <li>All equipment included</li>
+                    <li>Coach comes to you</li>
+                    <li>Flexible scheduling</li>
+                </ul>
+                <a href="#contact" class="btn-gold" style="width:100%;justify-content:center;display:flex;">Book Now</a>
+            </div>
+            <div class="price-card featured reveal d1">
+                <div class="price-name">MONTHLY</div>
+                <div class="price-type">Private Package · 8 Sessions</div>
+                <div class="price-amount"><span class="price-curr">AED&nbsp;</span>2200</div>
+                <div class="price-per">per month &nbsp;·&nbsp; save 200 AED</div>
+                <ul class="price-feats">
+                    <li>8 private sessions/month</li>
+                    <li>Priority booking</li>
+                    <li>Progress tracking</li>
+                    <li>Equipment included</li>
+                </ul>
+                <a href="#contact" class="btn-gold" style="width:100%;justify-content:center;display:flex;">Book Now</a>
+            </div>
+            <div class="price-card reveal d2">
+                <div class="price-name">GROUP</div>
+                <div class="price-type">Per Person &nbsp;·&nbsp; 2–5 People</div>
+                <div class="price-amount"><span class="price-curr">AED&nbsp;</span>150</div>
+                <div class="price-per">per person &nbsp;·&nbsp; per session</div>
+                <ul class="price-feats">
+                    <li>Max 5 participants</li>
+                    <li>Team energy &amp; motivation</li>
+                    <li>Equipment included</li>
+                    <li>Flexible location</li>
+                </ul>
+                <a href="#contact" class="btn-gold" style="width:100%;justify-content:center;display:flex;">Book Now</a>
+            </div>
+        </div>
+        <p class="price-note">* Kids &amp; Youth pricing on request. First trial session available — contact via WhatsApp to discuss.</p>
+    </div>
+</section>
+
+<!-- ====== GALLERY ====== -->
+<section id="gallery">
+    <div class="max-w gallery-hdr">
+        <div class="sec-label">In Action</div>
+        <h2>GALLERY</h2>
+    </div>
+    <div class="gallery-grid">
+        <!--
+            HOW TO ADD YOUR PHOTOS/VIDEOS:
+            Replace each <div class="g-placeholder"> with:
+            <img src="your-image.jpg" alt="Description">
+            OR for video:
+            <video src="your-video.mp4" autoplay muted loop playsinline></video>
+        -->
+        <div class="g-item">
+            <div class="g-placeholder">
+                <span class="icon">📷</span>
+                <span>Main Photo / Video</span>
+                <span class="g-add-label">(Replace with your image)</span>
+            </div>
+        </div>
+        <div class="g-item">
+            <div class="g-placeholder"><span class="icon">📷</span><span>Photo 2</span></div>
+        </div>
+        <div class="g-item">
+            <div class="g-placeholder"><span class="icon">📷</span><span>Photo 3</span></div>
+        </div>
+        <div class="g-item">
+            <div class="g-placeholder"><span class="icon">📷</span><span>Photo 4</span></div>
+        </div>
+        <div class="g-item">
+            <div class="g-placeholder"><span class="icon">🎥</span><span>Video</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== REVIEWS ====== -->
+<section id="reviews">
+    <div class="max-w">
+        <div class="reviews-hdr">
+            <div>
+                <div class="sec-label">Client Feedback</div>
+                <h2>WHAT CLIENTS<br>SAY</h2>
+            </div>
+            <a href="https://instagram.com/jumaevcoach" target="_blank" rel="noopener" class="insta-link">
+                📷&nbsp; @jumaevcoach
+            </a>
+        </div>
+        <div class="reviews-grid">
+            <!--
+                IMPORTANT: Replace these 3 cards with REAL reviews from actual clients.
+                Ask clients to send you a short quote via WhatsApp — then paste it here.
+            -->
+            <div class="rev-card reveal">
+                <div class="rev-stars">★★★★★</div>
+                <p class="rev-text">"From zero boxing knowledge to actually feeling confident in my stance and combinations — all in about 5 weeks. The method is like nothing I've experienced before."</p>
+                <div class="rev-author">
+                    <div class="rev-avatar">A</div>
+                    <div>
+                        <div class="rev-name">Ahmed K.</div>
+                        <div class="rev-loc">Private Client · Dubai</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rev-card reveal d1">
+                <div class="rev-stars">★★★★★</div>
+                <p class="rev-text">"My son started training and the change in his discipline and focus at school has been incredible. Patient, professional, and genuinely invested in progress."</p>
+                <div class="rev-author">
+                    <div class="rev-avatar">S</div>
+                    <div>
+                        <div class="rev-name">Sara M.</div>
+                        <div class="rev-loc">Parent · Kids Sessions</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rev-card reveal d2">
+                <div class="rev-stars">★★★★★</div>
+                <p class="rev-text">"We do group sessions with colleagues every week. He brings everything, comes to us, and the workout is intense but absolutely worth it. Best decision we made."</p>
+                <div class="rev-author">
+                    <div class="rev-avatar">R</div>
+                    <div>
+                        <div class="rev-name">Reza T.</div>
+                        <div class="rev-loc">Group Client · Dubai</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="reviews-note">* Replace these with real quotes from your clients once you start collecting them.</p>
+    </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section id="faq">
+    <div class="max-w">
+        <div class="faq-hdr">
+            <div class="sec-label">Questions</div>
+            <h2>FAQ</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    Do I need boxing experience to start?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">Not at all. Most clients start from zero — that's perfectly fine. We begin with the fundamentals: stance, movement, basic combinations, and build from there at your pace. All fitness levels and ages are welcome.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    Do I need to buy boxing equipment?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">No — all equipment including gloves, pads, and skipping rope is provided and brought to your location. All you need is comfortable workout clothes and trainers.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    Where do sessions take place?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">Sessions are fully mobile — Coach Jumaev comes to you. Your building gym, a park, your villa, or any suitable indoor or outdoor space in Dubai. No gym membership needed.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    How quickly will I see results?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">Most students begin noticing real improvements in technique, coordination, and fitness within 4–6 weeks of consistent training. The Soviet boxing methodology is built specifically for measurable, structured progression.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    What ages do you train?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">All ages, starting from 6 years old. Kids and youth sessions are age-appropriate and focused on development, discipline, and enjoyment. Adult sessions range from pure fitness to technical boxing training.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    How do I book?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">The fastest way is WhatsApp — tap the floating button on any page. You can also fill in the booking request form below and we'll confirm your slot within a few hours.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    What is the cancellation policy?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">We ask for at least 12 hours' notice to cancel or reschedule. Life happens — just send a WhatsApp message and we'll sort it out. No-shows on the day of the session may be charged.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section id="contact">
+    <div class="max-w contact-grid">
+        <div class="contact-info reveal">
+            <div class="sec-label">Get In Touch</div>
+            <h2>BOOK A<br>SESSION</h2>
+            <p>Ready to start? WhatsApp is the fastest way to reach me. Or fill in the form — I'll get back to you within a few hours to confirm your slot and discuss your goals.</p>
+            <div class="c-methods">
+                <a href="https://wa.me/971565104807?text=Hi%21+I%27d+like+to+book+a+boxing+session+with+Coach+Jumaev." target="_blank" rel="noopener" class="c-method">
+                    <div class="c-icon">💬</div>
+                    <div>
+                        <div class="c-lbl">WhatsApp (Fastest Response)</div>
+                        <div class="c-val">+971 56 510 48 07</div>
+                    </div>
+                </a>
+                <a href="https://instagram.com/jumaevcoach" target="_blank" rel="noopener" class="c-method">
+                    <div class="c-icon">📷</div>
+                    <div>
+                        <div class="c-lbl">Instagram</div>
+                        <div class="c-val">@jumaevcoach</div>
+                    </div>
+                </a>
+                <div class="c-method" style="cursor:default;">
+                    <div class="c-icon">📍</div>
+                    <div>
+                        <div class="c-lbl">Service Area</div>
+                        <div class="c-val">All Dubai · We come to you</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="book-form reveal d2">
+            <div class="form-ttl">REQUEST A SESSION</div>
+            <form onsubmit="sendForm(event)">
+                <div class="form-row">
+                    <div class="form-grp">
+                        <label class="form-lbl">Your Name</label>
+                        <input type="text" class="form-inp" id="f-name" placeholder="Mohammed Al Rashid" required>
+                    </div>
+                    <div class="form-grp">
+                        <label class="form-lbl">WhatsApp Number</label>
+                        <input type="tel" class="form-inp" id="f-phone" placeholder="+971 50 000 0000" required>
+                    </div>
+                </div>
+                <div class="form-grp">
+                    <label class="form-lbl">Session Type</label>
+                    <select class="form-sel" id="f-session" required>
+                        <option value="" disabled selected>Select a program</option>
+                        <option>Private 1-on-1 Session</option>
+                        <option>Kids &amp; Youth Session</option>
+                        <option>Group Training (2–5 people)</option>
+                    </select>
+                </div>
+                <div class="form-grp">
+                    <label class="form-lbl">Your Experience Level</label>
+                    <select class="form-sel" id="f-level">
+                        <option value="" disabled selected>Select your level</option>
+                        <option>Complete Beginner</option>
+                        <option>Some Experience</option>
+                        <option>Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
+                </div>
+                <div class="form-grp">
+                    <label class="form-lbl">Message (optional)</label>
+                    <textarea class="form-ta" id="f-msg" placeholder="Your goals, preferred timing, or location in Dubai..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Booking Request &rarr;</button>
+                <p class="form-note">You'll be redirected to WhatsApp to confirm your session.</p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div class="footer-logo">JUMAEV</div>
+            <div class="footer-tag">Boxing Coach · Dubai, UAE</div>
+        </div>
+        <ul class="footer-nav">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="footer-copy">&copy; 2025 Jumaev Boxing. All rights reserved.</div>
+    </div>
+</footer>
+
+<!-- ====== WHATSAPP FLOAT ====== -->
+<a href="https://wa.me/971565104807?text=Hi%21+I%27d+like+to+book+a+boxing+session+with+Coach+Jumaev." target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+</a>
+
+<script>
+    /* ── NAV SCROLL ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* ── MOBILE MENU ── */
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('open');
+    }
+    document.querySelectorAll('.nav-links a').forEach(a => {
+        a.addEventListener('click', () => {
+            document.getElementById('navLinks').classList.remove('open');
+        });
+    });
+
+    /* ── SCROLL REVEAL ── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revObs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => revObs.observe(el));
+
+    /* ── FAQ ACCORDION ── */
+    function openFaq(btn) {
+        const item = btn.parentElement;
+        const ans  = item.querySelector('.faq-a');
+        const open = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+            i.classList.remove('open');
+            i.querySelector('.faq-a').style.maxHeight = null;
+        });
+
+        if (!open) {
+            item.classList.add('open');
+            ans.style.maxHeight = ans.scrollHeight + 'px';
+        }
+    }
+
+    /* ── FORM → WHATSAPP ── */
+    function sendForm(e) {
+        e.preventDefault();
+        const name    = document.getElementById('f-name').value.trim();
+        const phone   = document.getElementById('f-phone').value.trim();
+        const session = document.getElementById('f-session').value;
+        const level   = document.getElementById('f-level').value || 'Not specified';
+        const msg     = document.getElementById('f-msg').value.trim() || '—';
+
+        const text = encodeURIComponent(
+            `Hi Coach Jumaev! I'd like to book a session.\n\n` +
+            `Name: ${name}\nPhone: ${phone}\n` +
+            `Session: ${session}\nLevel: ${level}\n` +
+            `Message: ${msg}`
+        );
+        window.open(`https://wa.me/971565104807?text=${text}`, '_blank');
+    }
+</script>
+</body>
+</html>
