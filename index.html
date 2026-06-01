@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Jumaev Boxing | Private Boxing Coach in Dubai</title>
+    <meta name="description" content="Private boxing coach in Dubai. 1-on-1 sessions, kids coaching & group training at your location. Soviet-style technique. Results in 4-6 weeks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant:ital,wght@0,400;0,600;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        /* ===========================
+           CSS VARIABLES
+        =========================== */
+        :root {
+            --black:      #080808;
+            --dark:       #111111;
+            --card:       #161616;
+            --border:     #242424;
+            --gold:       #C9A84C;
+            --gold-light: #E8D48A;
+            --gold-dim:   rgba(201,168,76,0.10);
+            --white:      #F2EDE4;
+            --grey:       #777777;
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-serif:   'Cormorant', serif;
+            --font-body:    'DM Sans', sans-serif;
+        }
+
+        /* ===========================
+           RESET
+        =========================== */
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust:100%; }
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: var(--font-body);
+            font-weight: 300;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; }
+        img, video { display: block; max-width: 100%; }
+
+        /* ===========================
+           NAVIGATION
+        =========================== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 22px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(8,8,8,0.96);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 14px 48px;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 24px;
+            letter-spacing: 6px;
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--white);
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            opacity: 0.65;
+            transition: opacity 0.3s, color 0.3s;
+        }
+        .nav-links a:hover { opacity:1; color: var(--gold); }
+        .nav-cta {
+            background: var(--gold) !important;
+            color: var(--black) !important;
+            padding: 10px 22px !important;
+            opacity: 1 !important;
+            font-weight: 500 !important;
+            letter-spacing: 2px !important;
+        }
+        .nav-cta:hover { background: var(--gold-light) !important; }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 8px;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 1px;
+            background: var(--white);
+            transition: all 0.3s;
+        }
+
+        /* ===========================
+           HERO
+        =========================== */
+        #hero {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 75% 45%, rgba(201,168,76,0.08) 0%, transparent 55%),
+                radial-gradient(ellipse at 15% 85%, rgba(201,168,76,0.04) 0%, transparent 45%),
+                var(--black);
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.35;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+        .hero-line {
+            position: absolute;
+            top: 0; right: 22%;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, var(--gold) 25%, var(--gold) 75%, transparent 100%);
+            opacity: 0.12;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 48px;
+            max-width: 880px;
+        }
+        .hero-eyebrow {
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.3s forwards;
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(56px, 10vw, 140px);
+            line-height: 0.88;
+            letter-spacing: 3px;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.9s ease 0.5s forwards;
+        }
+        .hero-title .gold { color: var(--gold); display: block; }
+        .hero-sub {
+            font-family: var(--font-serif);
+            font-size: clamp(15px, 1.6vw, 20px);
+            font-style: italic;
+            color: rgba(242,237,228,0.55);
+            margin: 24px 0 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.7s forwards;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.9s forwards;
+        }
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 14px 30px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            transition: background 0.3s, transform 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--white);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .btn-ghost:hover { opacity: 1; }
+        .hero-scroll {
+            position: absolute;
+            bottom: 36px;
+            left: 48px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--grey);
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 1.2s forwards;
+        }
+        .scroll-line {
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            animation: growLine 1s ease 1.6s forwards;
+        }
+
+        /* ===========================
+           MARQUEE TICKER
+        =========================== */
+        .ticker {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--dark);
+            padding: 16px 0;
+            overflow: hidden;
+        }
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            animation: ticker 22s linear infinite;
+        }
+        .ticker-item {
+            font-family: var(--font-display);
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            padding: 0 28px;
+            white-space: nowrap;
+        }
+        .ticker-sep {
+            color: rgba(242,237,228,0.25);
+            font-size: 8px;
+            align-self: center;
+        }
+
+        /* ===========================
+           SHARED SECTION STYLES
+        =========================== */
+        section { padding: 100px 48px; }
+        .sec-label {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .sec-label::after { content:''; width:28px; height:1px; background:var(--gold); }
+        h2 {
+            font-family: var(--font-display);
+            font-size: clamp(42px, 5vw, 72px);
+            line-height: 0.95;
+            letter-spacing: 2px;
+        }
+        .max-w { max-width: 1140px; margin: 0 auto; }
+
+        /* ===========================
+           ABOUT
+        =========================== */
+        #about { background: var(--dark); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .about-text h2 { margin: 18px 0 24px; }
+        .about-text p {
+            color: rgba(242,237,228,0.60);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .about-text p em { color: rgba(242,237,228,0.85); font-style: italic; }
+        .about-stats {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 36px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 48px;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .stat-lbl {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-top: 6px;
+        }
+        .about-img-wrap { position: relative; }
+        .about-img-box {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: var(--card);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+        }
+        .about-img-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gold);
+            z-index: 2;
+        }
+        .about-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .about-img-placeholder {
+            width:100%; height:100%;
+            display:flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            gap:12px; color:var(--grey);
+            font-size:12px; letter-spacing:2px;
+            text-transform:uppercase;
+        }
+        .about-badge {
+            position: absolute;
+            bottom: -18px;
+            right: -18px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 22px 28px;
+            font-family: var(--font-display);
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1.4;
+            z-index: 3;
+            box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+        }
+
+        /* ===========================
+           SERVICES
+        =========================== */
+        #services { background: var(--black); }
+        .services-hdr {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+        .svc-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 32px 28px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s;
+        }
+        .svc-card::after {
+            content:'';
+            position:absolute; inset:0;
+            background: var(--gold-dim);
+            opacity:0;
+            transition: opacity 0.4s;
+        }
+        .svc-card:hover { border-color: rgba(201,168,76,0.35); }
+        .svc-card:hover::after { opacity:1; }
+        .svc-card:hover .svc-num { color: rgba(201,168,76,0.2); }
+        .svc-num {
+            font-family: var(--font-display);
+            font-size: 52px;
+            color: rgba(255,255,255,0.04);
+            line-height:1;
+            margin-bottom:16px;
+            transition: color 0.4s;
+            position:relative; z-index:1;
+        }
+        .svc-icon {
+            width: 52px;
+            height: 52px;
+            margin-bottom: 16px;
+            position:relative;
+            z-index:1;
+            opacity: 0.85;
+        }
+        .svc-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .svc-name {
+            font-family: var(--font-display);
+            font-size: 26px;
+            letter-spacing:1px;
+            margin-bottom:12px;
+            position:relative; z-index:1;
+        }
+        .svc-desc {
+            color: rgba(242,237,228,0.55);
+            font-size: 13.5px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            position:relative;
+            z-index:1;
+        }
+        .svc-features { list-style:none; position:relative; z-index:1; }
+        .svc-features li {
+            font-size: 12px;
+            color: rgba(242,237,228,0.50);
+            padding: 7px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .svc-features li:last-child { border-bottom:none; }
+        .svc-features li::before {
+            content:'';
+            width: 14px;
+            height: 1px;
+            background: var(--gold);
+            flex-shrink:0;
+        }
+
+        /* ===========================
+           PRICING
+        =========================== */
+        #pricing { background: var(--dark); }
+        .pricing-hdr { margin-bottom: 48px; }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .price-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 36px 28px;
+            text-align: center;
+            position: relative;
+            transition: border-color 0.3s;
+        }
+        .price-card.featured {
+            border-color: var(--gold);
+            background: linear-gradient(160deg, var(--card) 60%, rgba(201,168,76,0.06) 100%);
+        }
+        .price-card.featured::before {
+            content: 'BEST VALUE';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--black);
+            font-size: 9px;
+            letter-spacing: 3px;
+            font-weight: 500;
+            padding: 5px 16px;
+        }
+        .price-name {
+            font-family: var(--font-display);
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .price-type {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-bottom: 24px;
+        }
+        .price-amount {
+            font-family: var(--font-display);
+            font-size: 52px;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .price-curr {
+            font-size: 20px;
+            vertical-align: top;
+            margin-top: 8px;
+            display: inline-block;
+        }
+        .price-per {
+            font-size: 11px;
+            color: var(--grey);
+            margin: 8px 0 24px;
+        }
+        .price-feats {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 28px;
+        }
+        .price-feats li {
+            font-size: 12px;
+            color: rgba(242,237,228,0.55);
+            padding: 9px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .price-feats li:last-child { border-bottom: none; }
+        .price-feats li::before { content:'\2713'; color: var(--gold); font-size: 11px; flex-shrink:0; }
+        .guarantee-box {
+            margin-top: 36px;
+            padding: 20px 24px;
+            border: 1px solid rgba(201,168,76,0.25);
+            background: rgba(201,168,76,0.05);
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .guarantee-box .guarantee-title {
+            font-family: var(--font-display);
+            font-size: 16px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+        .guarantee-box p {
+            font-size: 13px;
+            color: rgba(242,237,228,0.60);
+            line-height: 1.6;
+        }
+
+        /* ===========================
+           GALLERY
+        =========================== */
+        #gallery { background: var(--black); }
+        .gallery-hdr { margin-bottom: 40px; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 4px;
+            max-height: 640px;
+        }
+        .g-item {
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            background: var(--card);
+            border: 1px solid var(--border);
+        }
+        .g-item:first-child {
+            grid-row: span 2;
+        }
+        .g-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .g-item:hover video { transform: scale(1.03); }
+        .g-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--grey);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .g-placeholder .icon { font-size: 28px; opacity: 0.5; }
+
+        /* ===========================
+           FAQ
+        =========================== */
+        #faq { background: var(--dark); }
+        .faq-hdr { margin-bottom: 48px; max-width: 700px; }
+        .faq-list { max-width: 720px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border); }
+        .faq-q {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 22px 0;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            transition: color 0.3s;
+        }
+        .faq-q:hover { color: var(--gold); }
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--gold);
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+        .faq-item.open .faq-icon {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+            transform: rotate(45deg);
+        }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .faq-a-inner {
+            padding: 0 0 20px;
+            color: rgba(242,237,228,0.58);
+            font-size: 13.5px;
+            line-height: 1.75;
+        }
+
+        /* ===========================
+           CONTACT
+        =========================== */
+        #contact { background: var(--black); }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+        /* Booking form comes first on desktop (left column) */
+        .book-form {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 40px 36px;
+            order: 1;
+        }
+        .contact-info {
+            order: 2;
+        }
+        .contact-info h2 { margin: 18px 0 20px; }
+        .contact-info > p {
+            color: rgba(242,237,228,0.55);
+            font-size: 14px;
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+        .contact-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .c-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .c-row:hover {
+            border-color: var(--gold);
+            background: var(--gold-dim);
+        }
+        .c-row svg, .c-row .c-icon-emoji {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+        .c-row .c-icon-emoji {
+            font-size: 18px;
+            text-align: center;
+            line-height: 20px;
+        }
+        .c-row-text {
+            font-size: 13px;
+            color: var(--white);
+            letter-spacing: 0.3px;
+        }
+        .c-row-label {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--grey);
+            display: block;
+            margin-bottom: 2px;
+        }
+        .form-ttl {
+            font-family: var(--font-display);
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .form-grp { margin-bottom: 14px; }
+        .form-lbl {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-bottom: 6px;
+        }
+        .form-inp, .form-sel, .form-ta {
+            width: 100%;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            color: var(--white);
+            padding: 12px 14px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            outline: none;
+            border-radius: 0;
+            transition: border-color 0.3s;
+            -webkit-appearance: none;
+        }
+        .form-inp:focus, .form-sel:focus, .form-ta:focus { border-color: var(--gold); }
+        .form-inp::placeholder, .form-ta::placeholder { color: var(--grey); opacity: 0.6; }
+        .form-sel option { background: var(--dark); }
+        .form-ta { height: 90px; resize: vertical; }
+        .form-submit {
+            width: 100%;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            padding: 16px;
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 6px;
+            transition: background 0.3s;
+        }
+        .form-submit:hover { background: var(--gold-light); }
+        .form-note {
+            font-size: 11px;
+            color: var(--grey);
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        /* ===========================
+           WHATSAPP FLOAT
+        =========================== */
+        .wa-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .wa-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 28px rgba(37,211,102,0.45);
+        }
+        .wa-float svg { width: 26px; height: 26px; fill: white; }
+
+        /* ===========================
+           FOOTER
+        =========================== */
+        footer {
+            background: var(--dark);
+            border-top: 1px solid var(--border);
+            padding: 48px 48px;
+        }
+        .footer-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 28px;
+            letter-spacing: 5px;
+            color: var(--gold);
+        }
+        .footer-tag {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-top: 3px;
+        }
+        .footer-nav { display: flex; gap: 24px; list-style: none; }
+        .footer-nav a {
+            color: var(--grey);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .footer-nav a:hover { color: var(--gold); }
+        .footer-copy { font-size: 11px; color: var(--grey); }
+
+        /* ===========================
+           ANIMATIONS
+        =========================== */
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes growLine {
+            to { width: 40px; }
+        }
+        @keyframes ticker {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.in { opacity: 1; transform: none; }
+        .d1 { transition-delay: 0.1s; }
+        .d2 { transition-delay: 0.2s; }
+
+        /* ===========================
+           MOBILE RESPONSIVE
+        =========================== */
+        @media (max-width: 900px) {
+            nav { padding: 18px 20px; }
+            nav.scrolled { padding: 12px 20px; }
+            section { padding: 72px 20px; }
+            .hero-content { padding: 0 20px; max-width: 100%; }
+            .hero-title { font-size: clamp(44px, 14vw, 80px); }
+            .hero-sub { font-size: 15px; margin: 18px 0 32px; }
+            .hero-actions { gap: 14px; }
+            .btn-gold { padding: 13px 26px; font-size: 10px; width: 100%; justify-content: center; }
+            .btn-ghost { font-size: 10px; }
+            .hero-scroll { left: 20px; bottom: 28px; }
+            .hero-line { display: none; }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(8,8,8,0.98);
+                backdrop-filter: blur(30px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 24px;
+                z-index: 999;
+                padding: 80px 20px;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { font-size: 14px; opacity: 0.9; }
+            .hamburger { display: flex; }
+
+            .about-grid,
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-img-wrap { order: -1; max-width: 360px; margin: 0 auto; width: 100%; }
+            .about-badge {
+                bottom: -12px;
+                right: -8px;
+                padding: 16px 20px;
+                font-size: 14px;
+            }
+            .about-text h2 { font-size: clamp(36px, 10vw, 52px); }
+            .about-text p { font-size: 14px; }
+            .stat-num { font-size: 40px; }
+            .about-stats { gap: 24px; }
+
+            .services-grid { grid-template-columns: 1fr; gap: 16px; }
+            .services-hdr { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 36px; }
+            .svc-card { padding: 28px 24px; }
+            .svc-num { font-size: 44px; }
+            .svc-name { font-size: 24px; }
+
+            .pricing-grid { grid-template-columns: 1fr; gap: 16px; }
+            .price-card { padding: 32px 24px; }
+            .price-amount { font-size: 48px; }
+            .guarantee-box { padding: 16px 20px; }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                max-height: none;
+                gap: 8px;
+            }
+            .g-item { min-height: 240px; }
+            .g-item:first-child { grid-row: span 1; min-height: 280px; }
+
+            .contact-grid { gap: 40px; }
+            .book-form { order: 1; padding: 28px 20px; }
+            .contact-info { order: 2; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+
+            footer { padding: 36px 20px; }
+            .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+            .footer-nav { flex-wrap: wrap; justify-content: center; gap: 16px; }
+            .footer-copy { text-align: center; width: 100%; }
+
+            .wa-float { width: 48px; height: 48px; bottom: 20px; right: 20px; }
+            .wa-float svg { width: 24px; height: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: clamp(38px, 13vw, 56px); letter-spacing: 1px; }
+            .hero-sub { font-size: 14px; }
+            .hero-eyebrow { font-size: 10px; letter-spacing: 3px; }
+            .btn-gold { padding: 12px 22px; width: 100%; }
+            .btn-ghost { width: 100%; justify-content: center; }
+            .hero-actions { flex-direction: column; width: 100%; }
+            h2 { font-size: clamp(34px, 9vw, 46px); }
+            .svc-card { padding: 24px 20px; }
+            .price-card { padding: 28px 20px; }
+            .price-amount { font-size: 44px; }
+            .stat-num { font-size: 36px; }
+            .about-stats { gap: 20px; }
+            .guarantee-box .guarantee-title { font-size: 14px; }
+            .guarantee-box p { font-size: 12px; }
+            .faq-q { font-size: 14px; padding: 18px 0; }
+            .faq-a-inner { font-size: 12.5px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ====== NAVIGATION ====== -->
+<nav id="navbar">
+    <a href="#hero" class="nav-logo">JUMAEV</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="hamburger" id="ham" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-line"></div>
+    <div class="hero-content">
+        <p class="hero-eyebrow">Dubai's Private Boxing Coach</p>
+        <h1 class="hero-title">
+            JUMAEV<span class="gold">BOXING</span>
+        </h1>
+        <p class="hero-sub">Soviet-style discipline. Real results in 4-6 weeks.<br>We train at your location, on your schedule.</p>
+        <div class="hero-actions">
+            <a href="#contact" class="btn-gold">Book a Session</a>
+            <a href="#about" class="btn-ghost">Meet the Coach &rarr;</a>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        Scroll to explore
+    </div>
+</section>
+
+<!-- ====== TICKER ====== -->
+<div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+        <span class="ticker-item">Private Sessions</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <span class="ticker-item">Kids &amp; Youth</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <span class="ticker-item">Group Training</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <span class="ticker-item">We Come to You</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <span class="ticker-item">All Ages &amp; Levels</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <span class="ticker-item">Soviet-Style Boxing</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <span class="ticker-item">Dubai &nbsp;&middot;&nbsp; UAE</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="ticker-item">Private Sessions</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <span class="ticker-item">Kids &amp; Youth</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <span class="ticker-item">Group Training</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <span class="ticker-item">We Come to You</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <span class="ticker-item">All Ages &amp; Levels</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <span class="ticker-item">Soviet-Style Boxing</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+        <span class="ticker-item">Dubai &nbsp;&middot;&nbsp; UAE</span><span class="ticker-sep">&nbsp;&nbsp;&#9670;&nbsp;&nbsp;</span>
+    </div>
+</div>
+
+<!-- ====== ABOUT ====== -->
+<section id="about">
+    <div class="max-w about-grid">
+        <div class="about-text reveal">
+            <div class="sec-label">The Coach</div>
+            <h2>BUILT ON<br>DISCIPLINE</h2>
+            <p>Coach Jumaev brings over 10 years of boxing experience rooted in the Soviet boxing tradition &mdash; one of the most technically precise and results-driven schools in the world.</p>
+            <p>Born in Uzbekistan and shaped by a system that produces world champions, the Jumaev Boxing philosophy is about <em>mastering technique, developing footwork, building timing</em>.</p>
+            <div class="about-stats">
+                <div>
+                    <div class="stat-num">10+</div>
+                    <div class="stat-lbl">Years Experience</div>
+                </div>
+                <div>
+                    <div class="stat-num">4&ndash;6</div>
+                    <div class="stat-lbl">Weeks to Results</div>
+                </div>
+                <div>
+                    <div class="stat-num">All</div>
+                    <div class="stat-lbl">Ages Welcome</div>
+                </div>
+            </div>
+        </div>
+        <div class="about-img-wrap reveal d2">
+            <div class="about-img-box">
+                <!-- main.png - your 3x4 coach photo goes here -->
+                <img src="main.png" alt="Coach Jumaev - Professional Boxing Coach in Dubai" onerror="this.style.display='none'; this.parentElement.querySelector('.about-img-placeholder').style.display='flex';">
+                <div class="about-img-placeholder" style="display:none; position:absolute; inset:0;">
+                    <span style="font-size:40px;">&#129354;</span>
+                    <span>Add main.png here</span>
+                    <span style="font-size:10px; opacity:0.4;">3x4 format portrait photo</span>
+                </div>
+            </div>
+            <div class="about-badge">COACH<br>JUMAEV</div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== SERVICES ====== -->
+<section id="services">
+    <div class="max-w">
+        <div class="services-hdr">
+            <div>
+                <div class="sec-label">What I Offer</div>
+                <h2>TRAINING<br>PROGRAMS</h2>
+            </div>
+            <a href="#contact" class="btn-gold">Book a Session</a>
+        </div>
+        <div class="services-grid">
+            <div class="svc-card reveal">
+                <div class="svc-num">01</div>
+                <div class="svc-icon"><img src="icon-private.png" alt="Private 1-on-1 Training"></div>
+                <div class="svc-name">PRIVATE 1-ON-1</div>
+                <p class="svc-desc">Personalized coaching tailored to your goals, level, and schedule. The fastest path to real boxing skill.</p>
+                <ul class="svc-features">
+                    <li>Complete technique &amp; pad work</li>
+                    <li>Custom footwork &amp; defense</li>
+                    <li>All equipment provided</li>
+                    <li>Flexible timing &amp; location</li>
+                </ul>
+            </div>
+            <div class="svc-card reveal d1">
+                <div class="svc-num">02</div>
+                <div class="svc-icon"><img src="icon-kids.png" alt="Kids and Youth Boxing"></div>
+                <div class="svc-name">KIDS &amp; YOUTH</div>
+                <p class="svc-desc">Age-appropriate boxing that builds coordination, confidence, discipline, and fitness from day one.</p>
+                <ul class="svc-features">
+                    <li>Ages 6 and above</li>
+                    <li>Fundamentals-first approach</li>
+                    <li>Safe, structured environment</li>
+                    <li>Progress every session</li>
+                </ul>
+            </div>
+            <div class="svc-card reveal d2">
+                <div class="svc-num">03</div>
+                <div class="svc-icon"><img src="icon-group.png" alt="Group Training"></div>
+                <div class="svc-name">GROUP TRAINING</div>
+                <p class="svc-desc">Small groups of 2-5 people. Train with friends, family, or colleagues at your preferred location.</p>
+                <ul class="svc-features">
+                    <li>High-energy team sessions</li>
+                    <li>Technique + conditioning</li>
+                    <li>All equipment included</li>
+                    <li>Your location, your time</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== PRICING ====== -->
+<section id="pricing">
+    <div class="max-w">
+        <div class="pricing-hdr">
+            <div class="sec-label">Transparent Rates</div>
+            <h2>PRICING</h2>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card reveal">
+                <div class="price-name">PRIVATE</div>
+                <div class="price-type">1-on-1 &middot; Per Session</div>
+                <div class="price-amount"><span class="price-curr">AED&nbsp;</span>300</div>
+                <div class="price-per">per session &middot; 60 min</div>
+                <ul class="price-feats">
+                    <li>Full-personalized training plan</li>
+                    <li>All equipment included</li>
+                    <li>Coach comes to you</li>
+                    <li>Flexible scheduling</li>
+                </ul>
+                <a href="#contact" class="btn-gold" style="width:100%; display:flex; justify-content:center;">Book Now</a>
+            </div>
+            <div class="price-card featured reveal d1">
+                <div class="price-name">MONTHLY</div>
+                <div class="price-type">8 Private Sessions</div>
+                <div class="price-amount"><span class="price-curr">AED&nbsp;</span>2,200</div>
+                <div class="price-per">per month &middot; save 200 AED</div>
+                <ul class="price-feats">
+                    <li>8 sessions with priority booking</li>
+                    <li>Personalized progression plan</li>
+                    <li>Progress tracking each week</li>
+                    <li>All equipment included</li>
+                </ul>
+                <a href="#contact" class="btn-gold" style="width:100%; display:flex; justify-content:center;">Book Now</a>
+            </div>
+            <div class="price-card reveal d2">
+                <div class="price-name">GROUP</div>
+                <div class="price-type">Per Person &middot; 2-5 People</div>
+                <div class="price-amount"><span class="price-curr">AED&nbsp;</span>150</div>
+                <div class="price-per">per person &middot; per session</div>
+                <ul class="price-feats">
+                    <li>Small group, maximum 5</li>
+                    <li>Team energy &amp; motivation</li>
+                    <li>All equipment included</li>
+                    <li>Your preferred location</li>
+                </ul>
+                <a href="#contact" class="btn-gold" style="width:100%; display:flex; justify-content:center;">Book Now</a>
+            </div>
+        </div>
+        <div class="guarantee-box reveal">
+            <div class="guarantee-title">&#9733; MONEY-BACK GUARANTEE</div>
+            <p>Book your first session. If it is not what you expected, you get a full refund. No questions asked.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ====== GALLERY ====== -->
+<section id="gallery">
+    <div class="max-w gallery-hdr">
+        <div class="sec-label">In Action</div>
+        <h2>GALLERY</h2>
+    </div>
+    <div class="gallery-grid">
+        <div class="g-item">
+            <video src="first.mp4" autoplay muted loop playsinline poster="" onerror="this.style.display='none'; this.parentElement.querySelector('.g-placeholder').style.display='flex';"></video>
+            <div class="g-placeholder" style="display:none; position:absolute; inset:0;">
+                <span class="icon">&#127909;</span>
+                <span>first.mp4 (4&times;3)</span>
+            </div>
+        </div>
+        <div class="g-item">
+            <video src="second.mp4" autoplay muted loop playsinline poster="" onerror="this.style.display='none'; this.parentElement.querySelector('.g-placeholder').style.display='flex';"></video>
+            <div class="g-placeholder" style="display:none; position:absolute; inset:0;">
+                <span class="icon">&#127909;</span>
+                <span>second.mp4 (3&times;4)</span>
+            </div>
+        </div>
+        <div class="g-item">
+            <video src="third.mp4" autoplay muted loop playsinline poster="" onerror="this.style.display='none'; this.parentElement.querySelector('.g-placeholder').style.display='flex';"></video>
+            <div class="g-placeholder" style="display:none; position:absolute; inset:0;">
+                <span class="icon">&#127909;</span>
+                <span>third.mp4 (3&times;4)</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section id="faq">
+    <div class="max-w">
+        <div class="faq-hdr">
+            <div class="sec-label">Questions</div>
+            <h2>FAQ</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    Do I need boxing experience to start?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">No experience needed. Most clients start from zero. We build from the fundamentals &mdash; stance, movement, basic combinations &mdash; at your pace.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    Do I need boxing equipment?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">No. Gloves, pads, and all training gear are provided and brought to your location. Just wear comfortable clothes and trainers.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    Where do sessions take place?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">We come to you. Your building gym, a park, your villa &mdash; any suitable space in Dubai. No gym membership required.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    How quickly will I see results?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">Most clients see measurable improvement in technique, fitness, and coordination within 4-6 weeks of consistent training.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    What ages do you train?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">All ages from 6 and up. Kids sessions focus on fundamentals, discipline, and development. Adults range from fitness to technical boxing.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    How do I book?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">Tap the WhatsApp button or fill the booking form below. We confirm your slot within hours.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="openFaq(this)">
+                    What is the cancellation policy?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner">Give at least 12 hours notice to reschedule. Same-day no-shows may be charged.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== CONTACT / BOOK ====== -->
+<section id="contact">
+    <div class="max-w contact-grid">
+        <!-- BOOKING FORM (first) -->
+        <div class="book-form reveal">
+            <div class="form-ttl">BOOK YOUR SESSION</div>
+            <form onsubmit="sendForm(event)">
+                <div class="form-row">
+                    <div class="form-grp">
+                        <label class="form-lbl">Your Name</label>
+                        <input type="text" class="form-inp" id="f-name" placeholder="Full name" required>
+                    </div>
+                    <div class="form-grp">
+                        <label class="form-lbl">WhatsApp Number</label>
+                        <input type="tel" class="form-inp" id="f-phone" placeholder="+971 50 000 0000" required>
+                    </div>
+                </div>
+                <div class="form-grp">
+                    <label class="form-lbl">Session Type</label>
+                    <select class="form-sel" id="f-session" required>
+                        <option value="" disabled selected>Select a program</option>
+                        <option>Private 1-on-1 Session</option>
+                        <option>Kids &amp; Youth Session</option>
+                        <option>Group Training (2-5 people)</option>
+                    </select>
+                </div>
+                <div class="form-grp">
+                    <label class="form-lbl">Experience Level</label>
+                    <select class="form-sel" id="f-level">
+                        <option value="" disabled selected>Select your level</option>
+                        <option>Complete Beginner</option>
+                        <option>Some Experience</option>
+                        <option>Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
+                </div>
+                <div class="form-grp">
+                    <label class="form-lbl">Message (optional)</label>
+                    <textarea class="form-ta" id="f-msg" placeholder="Your goals, preferred time, or location in Dubai..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Booking Request &rarr;</button>
+                <p class="form-note">You'll be redirected to WhatsApp to confirm.</p>
+            </form>
+        </div>
+        <!-- CONTACT INFO (second, compact) -->
+        <div class="contact-info reveal d2">
+            <div class="sec-label">Get In Touch</div>
+            <h2>READY TO<br>START?</h2>
+            <p>WhatsApp is the fastest way to reach me. Or fill the booking form and I'll confirm your slot within hours.</p>
+            <div class="contact-compact">
+                <a href="https://wa.me/971565104807?text=Hi%21%20I'd%20like%20to%20book%20a%20boxing%20session%20with%20Coach%20Jumaev." target="_blank" rel="noopener" class="c-row">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--gold);"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <div>
+                        <span class="c-row-label">WhatsApp</span>
+                        <span class="c-row-text">+971 56 510 48 07</span>
+                    </div>
+                </a>
+                <a href="https://instagram.com/jumaevcoach" target="_blank" rel="noopener" class="c-row">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--gold);"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    <div>
+                        <span class="c-row-label">Instagram</span>
+                        <span class="c-row-text">@jumaevcoach</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div class="footer-logo">JUMAEV</div>
+            <div class="footer-tag">Boxing Coach &middot; Dubai, UAE</div>
+        </div>
+        <ul class="footer-nav">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="footer-copy">&copy; 2026 Jumaev Boxing. All rights reserved.</div>
+    </div>
+</footer>
+
+<!-- ====== WHATSAPP FLOAT ====== -->
+<a href="https://wa.me/971565104807?text=Hi%21%20I'd%20like%20to%20book%20a%20boxing%20session%20with%20Coach%20Jumaev." target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+</a>
+
+<script>
+    // NAV SCROLL
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // MOBILE MENU
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('open');
+    }
+    document.querySelectorAll('.nav-links a').forEach(a => {
+        a.addEventListener('click', () => {
+            document.getElementById('navLinks').classList.remove('open');
+        });
+    });
+
+    // SCROLL REVEAL
+    const revealEls = document.querySelectorAll('.reveal');
+    const revObs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => revObs.observe(el));
+
+    // FAQ ACCORDION
+    function openFaq(btn) {
+        const item = btn.parentElement;
+        const ans  = item.querySelector('.faq-a');
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+            i.classList.remove('open');
+            i.querySelector('.faq-a').style.maxHeight = null;
+        });
+        if (!open) {
+            item.classList.add('open');
+            ans.style.maxHeight = ans.scrollHeight + 'px';
+        }
+    }
+
+    // FORM TO WHATSAPP
+    function sendForm(e) {
+        e.preventDefault();
+        const name    = document.getElementById('f-name').value.trim();
+        const phone   = document.getElementById('f-phone').value.trim();
+        const session = document.getElementById('f-session').value;
+        const level   = document.getElementById('f-level').value || 'Not specified';
+        const msg     = document.getElementById('f-msg').value.trim() || '—';
+        const text = encodeURIComponent(
+            'Hi Coach Jumaev! I\'d like to book a session.\n\n' +
+            'Name: ' + name + '\nPhone: ' + phone + '\n' +
+            'Session: ' + session + '\nLevel: ' + level + '\n' +
+            'Message: ' + msg
+        );
+        window.open('https://wa.me/971565104807?text=' + text, '_blank');
+    }
+</script>
+</body>
+</html>
